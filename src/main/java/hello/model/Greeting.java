@@ -1,4 +1,4 @@
-package hello;
+package hello.model;
 
 /**
  * Created by zsoltbalogh on 14/12/2016.
