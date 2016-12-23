@@ -1,12 +1,15 @@
 package hello.controller;
 
+
 import hello.model.Greeting;
+import hello.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Optional;
 
 /**
  * Created by zsoltbalogh on 17/12/2016.
@@ -14,17 +17,13 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 public class GreetingController
 {
-
-    private static final String GREETING_TEMPLATE = "Hello %s!";
-    private final AtomicLong counter = new AtomicLong();
+    @Autowired
+    private GreetingService greetingService;
 
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)
     public Greeting sayGreeting(
-            @RequestParam(value = "name", defaultValue = "World") String name)
+            @RequestParam(value = "name", required = false) String name)
     {
-        return new Greeting(
-                counter.getAndIncrement(),
-                String.format(GREETING_TEMPLATE, name)
-        );
+        return greetingService.sayGreeting(Optional.ofNullable(name));
     }
 }
