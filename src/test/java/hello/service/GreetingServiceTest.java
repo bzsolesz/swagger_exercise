@@ -1,7 +1,6 @@
 package hello.service;
 
 import hello.model.Greeting;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,11 +13,11 @@ import static org.junit.Assert.*;
  */
 public class GreetingServiceTest {
 
-    private GreetingService testedService;
+    private GreetingServiceImpl testedService;
 
     @Before
     public void setup() {
-        testedService = new GreetingService();
+        testedService = new GreetingServiceImpl();
     }
 
     @Test
