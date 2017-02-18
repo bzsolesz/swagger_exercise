@@ -21,6 +21,4 @@ public class Application extends SpringBootServletInitializer
     public static void main(String[] arguments) {
         SpringApplication.run(Application.class, arguments);
     }
-
-
 }
